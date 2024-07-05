@@ -1,0 +1,279 @@
+/* StyleSheet */
+
+*::after *::before {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: lato;
+}
+
+header {
+  background: linear-gradient(45deg, #f5d0e2, pink, #ff69b4);
+  width: 100%;
+  height: auto;
+  position: static;
+  position: -webkit-sticky;
+  z-index: 1000;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  width: auto;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.app-logo {
+  width: 150px;
+  height: auto;
+}
+
+.nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.menu-items {
+  list-style-type: none;
+  display: flex;
+}
+
+.menu-list-items {
+  padding: 10px;
+  font-size: 20px;
+}
+
+.menu-list-items:hover {
+  background-color: #ffc3e1;
+  border-radius: 4px;
+}
+
+.menu-list-items a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Hamburger and sidebar menu */
+
+.hamburger-icon:hover {
+  background-color: #ffc3e1;
+  border-radius: 4px;
+}
+.side-menu-list {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .hamburger-icon {
+    display: none;
+  }
+  .menu-container {
+    display: none;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .nav-container {
+    display: none;
+  }
+  .side-menu-list {
+    display: block;
+  }
+  .crousal-container > div {
+    flex-wrap: wrap;
+  }
+  .app-logo {
+    width: 230px;
+    height: auto;
+  }
+  .menu-list-items {
+    font-size: 40px;
+  }
+  .hamburger-icon {
+    width: 70px;
+    height: auto;
+  }
+}
+
+/* menu drawer CSS */
+.menu-container {
+  position: relative;
+  top: 0;
+  transition: height 2s;
+  display: none;
+}
+.menu-container > nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  background-color: #f1efef;
+  border-radius: 3px;
+  z-index: 999;
+}
+.menu-container.open > nav {
+  height: 0;
+  animation: dropin 0.5s 0s;
+  animation-fill-mode: forwards;
+}
+
+.menu-container.open {
+  display: block;
+}
+@keyframes dropin {
+  0% {
+    height: 0;
+  }
+  33.33% {
+    height: 40px;
+  }
+  44.44% {
+    height: 50px;
+  }
+  66.66% {
+    height: 70px;
+  }
+  88.88% {
+    height: 90px;
+  }
+  100% {
+    height: auto;
+  }
+}
+
+.list-items {
+  list-style-type: none;
+  margin: 0;
+}
+
+/* Crousal-CSS Editing*/
+
+.carousel-container {
+  width: 100%;
+  height: auto;
+}
+.carousel-container > div {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  overflow: hidden;
+}
+.carousel-item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  animation: fade 15s infinite;
+  opacity: 0;
+}
+
+/* .carousel-item:first-child {
+  opacity: 0;
+} */
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  33.33% {
+    opacity: 1;
+  }
+  43.33% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.video-div {
+  display: grid;
+  background: linear-gradient(45deg, #f5d0e2, pink, #ff69b4);
+  grid-template-columns: auto;
+  justify-content: center;
+}
+.grid-content {
+  text-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+.grid-content b {
+  color: #ff69b4;
+  font-size: 25px;
+}
+.grid-content p {
+  font-size: 18px;
+}
+.video {
+  border-radius: 4px;
+  box-shadow: 2px 1 black;
+}
+
+/* Grid Layout */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.grid-item {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  color: white;
+  text-align: center;
+  /* cursor: pointer; */
+  overflow: hidden;
+}
+
+.grid-item .title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  z-index: 1;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.grid-item .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.grid-item:hover .content {
+  opacity: 1;
+}
+
+.grid-item:hover .title {
+  opacity: 0;
+}
